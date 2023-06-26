@@ -20,8 +20,6 @@ MUTATION_RATE = 0.1
 def evaluate_fitness(individual):
     """
         This function evaluates the fitness of an individual by calculating the accuracy of the corresponding model
-    :param individual:
-    :return:
     """
     selected_features_indices = np.nonzero(individual)[0]
     selected_features = X_train[:, selected_features_indices]
@@ -37,7 +35,6 @@ def evaluate_fitness(individual):
 def generate_population():
     """
         This function generates the initial population
-    :return:
     """
     population = []
     for i in range(POPULATION_SIZE):
@@ -50,8 +47,6 @@ def select_parents(population):
     """
         Selection: Tournament selection
         This function selects the parents from the population
-    :param population:
-    :return:
     """
     parents = []
     for _ in range(2):
@@ -73,8 +68,6 @@ def crossover(parent1, parent2):
     """
         Crossover: Single point crossover
         This function performs the crossover operation
-    :param parents:
-    :return:
     """
     parent1_list = np.array([parent1])
     crossover_point = np.random.randint(1, len(parent1_list))
@@ -89,8 +82,6 @@ def mutate(individual):
     """
         Mutation: Bit flip mutation
         This function performs the mutation operation
-    :param individual:
-    :return:
     """
     mutated_individual = []
     for gene in individual:
@@ -107,7 +98,6 @@ def mutate(individual):
 def genetic_algorithm():
     """
         This function implements the genetic algorithm
-    :return:
     """
     population = generate_population()
     best_fitness = 0
